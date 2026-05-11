@@ -4,6 +4,8 @@ import { CheckoutPage } from "./pages/CheckoutPage";
 import { OrdersPage } from "./pages/OrdersPage";
 import "./App.css";
 
+import './data/backend-practice'
+
 export const App = () => {
   return (
     <Routes>

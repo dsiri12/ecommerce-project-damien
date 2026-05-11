@@ -1,43 +1,16 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import axios from "axios";
 import { Header } from "../components/Header";
 import "./HomePage.css";
 import { ProductsCard } from "../components/home/ProductsCard";
-import { useEffect, useState } from "react";
-import type { ProductType } from "../types/ProductType";
+import { useProducts } from "../hooks/useProducts";
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<ProductType[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<any | null>(null);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get<ProductType[]>(
-          "http://localhost:3000/api/products",
-        );
-
-        setProducts(response.data);
-        
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
-        setError(error);
-
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+  const { data: products = [], isLoading, isError, error } = useProducts();
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  if (isError) {
     return <p>{(error as Error).message}</p>;
   }
 
