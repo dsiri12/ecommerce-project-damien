@@ -4,11 +4,15 @@ import axios from "axios";
 import type { ProductType } from "../types/ProductType";
 
 const fetchProducts = async (): Promise<ProductType[]> => {
-  const response = await axios.get<ProductType[]>(
+  const res = await axios.get<ProductType[]>(
     "http://localhost:3000/api/products",
   );
 
-  return response.data;
+	if (res.status !== 200) {
+          throw new Error("Failed to fetch products");
+    }
+
+  return res.data;
 };
 
 export const useProducts = () => {

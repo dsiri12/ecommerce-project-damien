@@ -1,11 +1,13 @@
 export let products = [];
 
-const loadProductsFetch = () => {
+export const loadProductsFetch = async () => {
+  console.log('loading products with fetch');
   fetch('https://supersimplebackend.dev/products').then((response) => {
     console.log(response);
   })
 }
-loadProductsFetch()
+
+await loadProductsFetch()
 
 
 export function loadProducts(callbackFn: ()=>void) {

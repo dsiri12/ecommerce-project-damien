@@ -1,56 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { loadProducts } from "./productsData"
-import { loadCart } from "./cartData";  
+import { loadProductsFetch } from "./productsData"
 
 // async = makes a function return a promise
 const loadPage = async () => {  // () => Promise<void>
   console.log('page loaded');
+
+  await loadProductsFetch(); //  await can only be used in async functions
+
+  return 'value2';
 }
 
-loadPage().then(() => {
-  console.log('page load promise resolved');
+loadPage().then((value: string) => {
+  console.log('next step');
+  console.log(value); 
 })
 
-// ==
-const loadPage1 =  () => { // () => Promise<unknown>
-  return new Promise((resolve: any) => {
-      console.log('page loaded1');
-      resolve();
-    })
-}
-
-loadPage1().then(() => {
-  console.log('page1 load promise resolved');
-})
-  
-
-Promise.all([
-  new Promise((resolve: any) => {
-    loadProducts(()=> {
-      resolve('value1')
-    })
-  }),
-
-  new Promise((resolve: any) => {
-    loadCart(()=> {
-      resolve()
-    })
-  }),
+await loadProductsFetch();  
+// top level await, only works in modules, and only if the module system is set to ESNext
 
 
-]).then((values: any[]) => {
-  console.log(values);
-})
-
-/*
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-new Promise((resolve: any) => {
-  console.log('start promise')
-  loadProducts(()=> {
-    console.log('finished loading');
-    resolve()
-  })
-}).then(() => {
-  console.log('promise resolved- next step');
-})
-  */
