@@ -25,3 +25,18 @@ export const useProductsAxiosAsyncAwait = () => {
 
   return { data: products };
 };
+
+/*
+Full Flow:
+
+Component calls hook
+products starts as []
+useEffect runs
+fetchProducts() executes
+Axios sends GET request
+await waits for response
+Response received
+Status checked
+Products stored in state
+Component re-renders
+*/

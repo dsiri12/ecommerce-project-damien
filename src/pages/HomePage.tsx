@@ -1,10 +1,14 @@
 import { Header } from "../components/Header";
 import "./HomePage.css";
 import { ProductsCard } from "../components/home/ProductsCard";
-import { useProductsAxiosAsyncAwait } from "../hooks/useProductsAxiosAsyncAwait";
+import { useProducts } from "../hooks/useProducts";
 
 export const HomePage = () => {
-  const { data: products = [] } = useProductsAxiosAsyncAwait()
+  const { data: products = [] , isLoading, isError , error} = useProducts()
+
+  if (isLoading) return <p>Loading products...</p>;
+  
+  if (isError) return <p>Error: {error?.message}</p>;
 
   return (
     <>

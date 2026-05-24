@@ -22,3 +22,16 @@ export const useProductsAxios = () => {
 
   return { data: products };
 };
+
+/*
+Full Flow:
+
+Component calls useProductsAxios()
+State starts as []
+useEffect runs once
+Axios sends GET request
+Server returns products
+Axios converts JSON automatically
+setProducts() updates state
+Component re-renders with products
+*/
