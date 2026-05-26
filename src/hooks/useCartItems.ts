@@ -23,3 +23,23 @@ export const useCartItems = () => {
     queryFn: fetchCartItems
   })
 }
+
+/*
+Flow of Execution:
+
+Component renders  (Header component calls useCartItems to show cart count in header ):
+       ↓
+useCartItems() called
+       ↓
+useQuery executes queryFn
+       ↓
+fetchCartItems() runs
+       ↓
+Axios sends GET request
+       ↓
+Data returned
+       ↓
+React Query caches result
+       ↓
+Component re-renders with data
+*/
