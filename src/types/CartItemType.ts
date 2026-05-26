@@ -1,10 +1,14 @@
+import type { ProductType } from "./ProductType";
+
  export type CartItemType = {
     id: number;
     productId: string;
     quantity: number;
     deliveryOptionId: string;
-    createdAt: string;
-    updatedAt: string;
+    product: ProductType;
+
+    // createdAt: string;
+    // updatedAt: string;
 }
 
 /*

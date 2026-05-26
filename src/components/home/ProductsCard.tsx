@@ -1,11 +1,12 @@
 import type { ProductType } from "../../types/ProductType";
+import { formatMoney } from "../../utils/money";
 
 type Props = {
   product: ProductType;
 };
 
 export const ProductsCard = ({ product }: Props) => {
-  const {name, image, rating, priceCents} = product
+  const { name, image, rating, priceCents } = product;
 
   return (
     <div className="product-container">
@@ -20,12 +21,10 @@ export const ProductsCard = ({ product }: Props) => {
           className="product-rating-stars"
           src={`images/ratings/rating-${rating.stars * 10}.png`}
         />
-        <div className="product-rating-count link-primary">
-          {rating.count}
-        </div>
+        <div className="product-rating-count link-primary">{rating.count}</div>
       </div>
 
-      <div className="product-price">${(priceCents / 100).toFixed(2)}</div>
+      <div className="product-price">{formatMoney(priceCents)}</div>
 
       <div className="product-quantity-container">
         <select>
