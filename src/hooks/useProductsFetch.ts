@@ -5,7 +5,7 @@ export const useProductsFetch = () => {
   const [products, setProducts] = useState<ProductType[]>([])
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/products")
+    fetch("/api/products")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch products");

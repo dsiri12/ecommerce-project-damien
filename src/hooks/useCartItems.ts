@@ -4,7 +4,7 @@ import axios from "axios";
 
 const fetchCartItems = async (): Promise<CartItemType[]> => {
   try {
-    const res = await axios.get("http://localhost:3000/api/cart-items");
+    const res = await axios.get("/api/cart-items");
 
     if (res.status !== 200) {
       throw new Error("Failed to fetch cart items");

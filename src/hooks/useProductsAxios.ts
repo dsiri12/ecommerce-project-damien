@@ -7,7 +7,7 @@ export const useProductsAxios = () => {
 
   useEffect(() => {
     axios
-      .get<ProductType[]>("http://localhost:3000/api/products")
+      .get<ProductType[]>("/api/products")
       .then((res) => {
          if (res.status !== 200) {
           throw new Error("Failed to fetch products")

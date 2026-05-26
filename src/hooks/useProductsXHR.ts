@@ -14,7 +14,7 @@ export const useProductsXHR = () => {
       }
     };
 
-    xhr.open("GET", "http://localhost:3000/api/products");
+    xhr.open("GET", "/api/products");
     xhr.send();
   }, []);
 

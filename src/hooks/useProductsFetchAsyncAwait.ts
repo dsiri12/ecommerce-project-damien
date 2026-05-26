@@ -7,7 +7,7 @@ export const useProductsFetchAsyncAwait = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/products")
+        const res = await fetch("/api/products")
         if (res.status !== 200) {
           throw new Error(`Error ${res.status}: ${res.statusText}`)
         }

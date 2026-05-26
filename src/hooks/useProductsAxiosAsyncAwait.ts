@@ -8,7 +8,7 @@ export const useProductsAxiosAsyncAwait = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/products");
+        const res = await axios.get("/api/products");
 
         if (res.status !== 200) {
           throw new Error("Failed to fetch products");
