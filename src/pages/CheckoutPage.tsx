@@ -8,15 +8,6 @@ import './CheckoutPage.css';
 export const CheckoutPage = () => {
   const { data: cartItems } = useCartItems();
 
-  const [deliveryOptions, setDeliveryOptions] = useState([]);
-
-  useEffect(() => {
-    axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-      .then((response) => {
-        setDeliveryOptions(response.data);
-      });
-  }, [])
-
   return ( 
     <>
     <title>Checkout</title>
