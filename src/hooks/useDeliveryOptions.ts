@@ -27,5 +27,27 @@ export const useDeliveryOptions = () => {
 
     staleTime: Infinity,
     gcTime: Infinity,
+
+    // Disable caching
+    // staleTime: 0,
+    // gcTime: 0,
+
+    // // Always refetch
+    // refetchOnMount: true,
+    // refetchOnWindowFocus: true,
   })
 };
+
+/*
+Full Flow:
+
+Component calls useDeliveryOptions()
+React Query checks cache
+If not cached:
+runs fetchDeliveryOptions
+Axios sends request
+Backend returns delivery options
+Data stored in React Query cache
+Components receive cached data
+Future components reuse same cache instantly
+*/
